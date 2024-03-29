@@ -1,0 +1,20 @@
+name: Issue repro
+
+on:
+  push:
+    branches:
+      - main
+jobs:
+  build:
+    name: Repro
+    runs-on: macos-14
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: brew install protobuf
+        run: brew install protobuf
+
+      - name: Fix node-gyp
+        run: python3 -m pip install packaging setuptools
